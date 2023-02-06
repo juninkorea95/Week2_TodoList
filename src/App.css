@@ -71,13 +71,14 @@
 .todo-box {
   width: 200px;
   height: 150px;
-  border: 1px solid green;
+  border: 3px solid skyblue;
   border-Radius: 10px;
   display: flex;
   align-Items: center;
   justify-Content: center;
   display : block;
   text-align: center;
+  margin-right: 20px;
 }
 
 .titleText {
@@ -129,13 +130,14 @@
 .done-box {
   width: 200px;
   height: 150px;
-  border: 1px solid green;
+  border: 5px solid lightpink;
   border-Radius: 10px;
   display: flex;
   align-Items: center;
   justify-Content: center;
   display : block;
   text-align: center;
+  margin-right: 20px;
 }
 
 

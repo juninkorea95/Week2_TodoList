@@ -85,10 +85,10 @@ const handleMovetoTodo = (index) => {
       <div className = "workingText">완료...!</div>
       <div className = "done-area">
       
-      {doneTodos.map((todo, index) => (
-        <div className="todo-box" key={index}>
-            <div className="titleText">{todo.title}</div>
-            <div className="contentText">{todo.content}</div>
+      {doneTodos.map((done, index) => (
+        <div className="done-box" key={index}>
+            <div className="titleText">{done.title}</div>
+            <div className="contentText">{done.content}</div>
             <button className="deleteButton" onClick ={()=>handleDelete2(index)}>삭제하기</button>
             <button className="cancelButton" onClick ={()=>handleMovetoTodo(index)}>취소</button>
         </div>
