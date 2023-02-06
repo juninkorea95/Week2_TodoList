@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import './App.css';
+import TopBox from './components/TopBox.jsx';
 
 
 function App() {
@@ -40,13 +41,7 @@ const handleMovetoTodo = (index) => {
   
   return (
     <div className = "app-style">
-      
-      <div className = "topBox-style">
-        {/* 여기에 My Todo List 와 React 문구 삽입 */}
-        <div className ="left-text">My Todo List</div>
-        <div className ="right-text">React</div>
-      </div>
-
+      <TopBox/>
       <div className = "inputBox-style">
         {/* 여기에 제목 , 내용 입력란 생성 */}
         <label className='input-label'>제목:</label>
