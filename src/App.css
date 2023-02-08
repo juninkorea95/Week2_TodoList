@@ -1,4 +1,10 @@
+* {
+  box-sizing: border-box;
+}
+
+
 .topBox-style {
+  background-color: black;
   width: 1200px;
   height: 50px;
   border: 1px solid green;
@@ -11,10 +17,12 @@
 }
 
 .left-text {
+  color: white;
   text-align: left;
 }
 
 .right-text {
+  color: white;
   text-align: right;
 }
 
@@ -22,7 +30,6 @@
   width: 1200px;
   height: 100px;
   border: 1px solid black;
-  border-Radius: 10px;
   display: flex;
   align-Items: center;
   justify-Content: left;
@@ -30,34 +37,50 @@
   padding-right: 10px;
   margin: 0 auto;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
 
 .input-label {
+  font-family: 'Noto Sans KR', sans-serif;
   margin-right: 10px;
   margin-left: 10px;
+  font-weight: bold;
 }
+
+.input-button {
+  margin-top: 5px;
+  border-radius: 3px;
+  height : 30px;
+  width: 300px;
+}
+
 
 .submit-button {
+  background-color: rgb(108, 175, 108);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
   text-align: right;
-  margin-left: auto;
+  margin-left: 30px;
 }
 
-.todo-area {
-  width: 1200px;
-  height: 200px;
-  display: flex;
-  align-Items: center;
-  justify-Content: left;
-  padding-left: 10px;
-  padding-right: 10px;
-  margin: 0 auto;
+.submit-button:hover {
+  background-color: skyblue;
 }
 
-.workingText {
+
+  @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap');
+
+
+.todoText {
+  font-family: 'Oswald', sans-serif;
   font-size: 20px;
   font-weight: bold;
+  
   margin-bottom: 10px;
   clear: both;
-
   width: 1200px;
   height: 50px;
   display: flex;
@@ -66,11 +89,36 @@
   padding-left: 10px;
   padding-right: 10px;
   margin: 0 auto;
+  position: static;
 }
+
+.todo-area {
+  
+  width: 1200px;
+  min-height: 200px;
+  display: flex;
+  flex-wrap: wrap;
+  align-Items: center;
+  justify-Content: left;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  
+}
+
+@keyframes fadeIn {
+  from {
+  opacity: 0;
+  }
+  to {
+  opacity: 1;
+  }
+  }
 
 .todo-box {
   width: 200px;
-  height: 150px;
+  min-height: 150px;
   border: 3px solid skyblue;
   border-Radius: 10px;
   display: flex;
@@ -79,47 +127,72 @@
   display : block;
   text-align: center;
   margin-right: 20px;
+  margin-bottom :20px;
+  animation: fadeIn 0.5s ease-in;
 }
 
 .titleText {
-  margin-top : 10px;
-  margin-left :5px;
-  text-align: left;
+  margin-top: 15px;
+  text-align: center;
   font-size: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 .contentText {
-  margin-top : 10px;
-  margin-left: 5px;
-  text-align: left;
+  margin-top: 10px;
+  text-align: center;
   font-size: 13px;
+  display: flex;
+  justify-content: center;
 }
 
 .deleteButton {
   margin-right: 10px;
   margin-top : 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: white;
 }
 
-.done-area {
+.doneButton {
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+}
+
+.cancelButton {
+  cursor: pointer;
+  background-color: lightpink;
+  color: black;
+  border-radius: 5px;
+}
+
+.doneText {
+  
+  font-family: 'Oswald', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  clear: both;
   width: 1200px;
-  height: 200px;
+  height: 50px;
   display: flex;
   align-Items: center;
   justify-Content: left;
   padding-left: 10px;
   padding-right: 10px;
   margin: 0 auto;
+  position: static;
 }
 
-.doneText {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 10px;
-  clear: both;
-
+.done-area {
+  
   width: 1200px;
-  height: 50px;
+  min-height: 200px;
   display: flex;
+  flex-wrap: wrap;
   align-Items: center;
   justify-Content: left;
   padding-left: 10px;
@@ -130,7 +203,7 @@
 .done-box {
   width: 200px;
   height: 150px;
-  border: 5px solid lightpink;
+  border: 3px solid lightpink;
   border-Radius: 10px;
   display: flex;
   align-Items: center;
@@ -138,6 +211,8 @@
   display : block;
   text-align: center;
   margin-right: 20px;
+  margin-bottom :20px;
+  animation: fadeIn 0.5s ease-in;
 }
 
 

@@ -1,26 +1,37 @@
 import React from 'react';
 import { useState } from 'react';
-import './App.css';
+import 'App.css';
 import TopBox from './components/TopBox.jsx';
-
+import InputBox from 'components/InputBox.jsx';
+import TodoBox from 'components/TodoBox.jsx';
+import DoneBox from 'components/DoneBox.jsx';
 
 function App() {
+  
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [todos, setTodos] = useState([])
-  const [doneTodos, setDoneTodos] = useState([]);
-
+  const [todos, setTodos] = useState([{title: "리액트", content: "리액트 기본 공부"}])
+  const [doneTodos, setDoneTodos] = useState([{title: "알고리즘", content: "알고리즘 패턴 정리"}]);
 
   const handleSubmit = () => {
     if (title && content) {
       setTodos([...todos, {title, content}])
       setTitle('')
       setContent('')
-    } 
+    } else {
+      alert ('제목과 내용을 입력해 주세요!')
+    }
   };
 
+  // handleKeyDown은 또다시 handleSubmit을 호출하는데, 그 조건은 enter키를 눌러야 함.
+    const handleKeyDown = (e) => {
+    if (e.keyCode === 13) {
+      handleSubmit();
+    }
+  };
+  
   const handleDelete = (index) => {
-    setTodos(todos.filter((item, i) => i !== index))
+    setTodos(todos.filter((todo, i) => i !== index))
   };
 
   const handleMoveToDone = (index) => {
@@ -42,55 +53,45 @@ const handleMovetoTodo = (index) => {
   return (
     <div className = "app-style">
       <TopBox/>
-      <div className = "inputBox-style">
-        {/* 여기에 제목 , 내용 입력란 생성 */}
-        <label className='input-label'>제목:</label>
-        <input 
-          type="text" 
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
+      <InputBox
+        title = {title}
+        content = {content}
+        setTitle={setTitle} 
+        setContent={setContent} 
+        handleSubmit={handleSubmit} 
+        handleKeyDown={handleKeyDown} 
+      />
         
-        <label className = 'input-label'>내용:</label>
-        <input 
-          type="text" 
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-        />
-
-        <button className="submit-button" onClick={handleSubmit}>추가하기</button>
-      </div>
-
-
       {/* 여기는 입력한 Todo-box가 쌓이는 곳 */}
-      <div className = "workingText">Working...!</div>
-      <div className="todo-area">
       
+      <div className = "todoText">To do</div>
+      <div className="todo-area">
         {todos.map((todo, index) => (
-          <div className="todo-box" key={index}>
-            <div className="titleText">{todo.title}</div>
-            <div className="contentText">{todo.content}</div>
-            <button className="deleteButton" onClick ={()=>handleDelete(index)}>삭제하기</button>
-            <button className="doneButton" onClick ={()=>handleMoveToDone(index)}>완료</button>
-          </div>
+          <TodoBox
+          index = {index}
+          todo = {todo}
+          handleDelete = {handleDelete}
+          handleMoveToDone = {handleMoveToDone}  
+          />
         ))}
       </div>
+      
+      
 
       {/* 여기는 완료한 Todo-box가 쌓이는 곳 */}
-      <div className = "workingText">완료...!</div>
-      <div className = "done-area">
-      
-      {doneTodos.map((done, index) => (
-        <div className="done-box" key={index}>
-            <div className="titleText">{done.title}</div>
-            <div className="contentText">{done.content}</div>
-            <button className="deleteButton" onClick ={()=>handleDelete2(index)}>삭제하기</button>
-            <button className="cancelButton" onClick ={()=>handleMovetoTodo(index)}>취소</button>
-        </div>
+    
+        <div className = "doneText">Complete</div>
+          <div className = "done-area">
+          {doneTodos.map((done, index) => (
+            <DoneBox
+              index = {index}
+              done = {done}
+              handleDelete2 = {handleDelete2}
+              handleMovetoTodo = {handleMovetoTodo}
+            />
       ))}
-        
       </div>
-
+      
     </div>
   );
 }
