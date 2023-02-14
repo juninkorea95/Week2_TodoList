@@ -5,7 +5,9 @@ import TodoBox from 'components/TodoBox'
 import DoneBox from 'components/DoneBox'
 import styled from 'styled-components'
 import { useDispatch, useSelector } from 'react-redux'
-// import { addTodo, deleteTodo, doneTodo, cancelTodo } from 'redux/modules/todos'
+import { Title, ResetTitle } from 'redux/modules/title'
+import { Content, ResetConTent } from 'redux/modules/content'
+import { Add, Delete, Done, Cancel } from 'redux/modules/todos'
 
 
 const StText = styled.div`
@@ -50,16 +52,6 @@ const StBox = styled.div`
 export { StText, StBox ,StArea }
 
 function App() {
-
-  // redux를 쓴다면 useSelector를 여기에서 쓴다!
-  //아래의 식에서 'state'는 store에 저장되고 관리되는 전체 state를 의미한다. 
-  // useSelector는 결국 configStore.js에 저장되어있는 state애들을 가져와서 필요한 정보만 뽑아 쓸수 있게 돕는 hook이다. 
-  // 결국 props와 하는 일이 매우 비슷하다. 다만 접근방식이 상하관리 -> 중앙 분산관리로 바뀌었을 뿐. 
-  
-  // const title = useSelector(state => state) 
-
-  // const content = useSelector(state => state) 
-
   
   // title 과 content 는 제목/내용 빈칸에 들어가는 글자의 상태를 그려주기 위해 만든 state 
   const title = useSelector(state => state.title)
@@ -67,28 +59,17 @@ function App() {
   const content = useSelector(state => state.content)
 
   const todos = useSelector(state =>state.todos)
-
-  // 이 상태로 title, content를 console로 찍어보면 '실시간'으로 내가 입력한 값이 콘솔에 찍히는 것을 확인할 수 있다.
-  // 이 말의 의미는, 이 값을 다른 함수 장치를 통해 다른 어딘가로 보내는 것도 가능하다는 뜻. 
   
   const dispatch = useDispatch()
 
   // title 모듈로 e를 보내주었다. 
-  const titleChange = (e) => {dispatch({
-    type: 'TITLE',
-    e,
-  })}
+  const titleChange = (e) => {dispatch(Title(e.target.value))}
   
   // content 모듈로 e를 보내주었다. 
-  const contentChange = (e) => {dispatch({
-    type: 'CONTENT',
-    e,
-  })}
+  const contentChange = (e) => {dispatch(Content(e.target.value))}
 
   const submitButtonHandler = () => {
 
-    // 두 인풋박스에 모두 입력값이 있다면
-    // 아래와 같은 newTodo라는 요소(객체의 형태)를 만들어 todos라는 배열의 다음요소로 넣어준다(넣어주는 동작은 setTodos가 한다). 
     if (title && content) {
       const newTodo = {
         id: Date.now(),
@@ -97,11 +78,10 @@ function App() {
         isDone: 0,
       }
       const addedTodo = [...todos,newTodo]
-      dispatch({
-        type : 'ADD',
-        addedTodo
-      })
-      // 값을 입력한 이후에는 input 비워주기 
+      dispatch(Add(addedTodo))
+      
+      dispatch(ResetTitle())
+      dispatch(ResetConTent())
     
     } else {
       alert ('제목과 내용을 추가해주세요!')
@@ -110,24 +90,15 @@ function App() {
 
   const deleteButtonHandler = (id) => {
       const updatedTodos = todos.filter(todo => {return todo.id !== id})  
-      dispatch({
-        type : 'DELETE',
-        updatedTodos,
-      })}
+      dispatch(Delete(updatedTodos))}
 
   const moveToDoneHandler = (id) => {
     const moveToDone = todos.map((todo) => (todo.id === id ) ? {...todo, isDone: 1} : todo)
-    dispatch({
-      type: 'DONE',
-      moveToDone,
-    })}
+    dispatch(Done(moveToDone))}
 
   const returnToTodoHandler = (id) => {
     const returnToTodo = todos.map((todo) => (todo.id === id) ? {...todo, isDone: 0} : todo )
-    dispatch({
-      type: 'CANCEL',
-      returnToTodo,
-    })
+    dispatch(Cancel(returnToTodo))
   }
  
   return (
