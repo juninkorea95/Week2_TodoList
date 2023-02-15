@@ -8,7 +8,6 @@ export const Content = (value) => {
     }
 }
 
-
 export const ResetConTent = () => {
     return {
         type: RESET,

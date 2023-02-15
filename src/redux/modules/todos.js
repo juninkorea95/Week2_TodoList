@@ -1,4 +1,3 @@
-// export const ADD = 'ADD'
 const ADD = 'ADD'
 const DELETE = 'DELETE'
 const DONE = 'DONE'
