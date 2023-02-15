@@ -1,6 +1,5 @@
 function InputBox({title, content, titleChange, contentChange, submitButtonHandler}) {
     return <div className='Input-Box' style = {{    
-        // 제목, 내용, 추가 버튼을 포괄하는 전체 박스(Input-Box)에 대한 스타일링은 이것으로!
         width: '1200px',
         height: '100px',
         border: '1px solid black',

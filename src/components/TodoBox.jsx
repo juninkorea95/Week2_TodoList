@@ -1,4 +1,4 @@
-import { StArea, StBox, StText } from "pages/Home"
+import { StText, StArea, StBox } from "styles/style"
 import { Link } from "react-router-dom"
 
 function TodoBox({todos, deleteButtonHandler, moveToDoneHandler}) {
@@ -7,7 +7,6 @@ function TodoBox({todos, deleteButtonHandler, moveToDoneHandler}) {
         
       <StText> To do 😊 </StText>
 
-      {/* 이곳에 todo-area 에 대한 것을 정의한다.  */}
       <StArea>
         
       {todos.filter(todo => todo.isDone === 0)
@@ -21,11 +20,8 @@ function TodoBox({todos, deleteButtonHandler, moveToDoneHandler}) {
         </StBox>
         ))}
       
-      {/* todo-area 가 닫히는 태그 */}
       </StArea>
-      
-      
-      {/* todo-text , todo-area, todo-box 삼총사 다 묶는 div 닫는 태그 */}
+
       </div>
     )
 }

@@ -29,4 +29,3 @@ const title = (state = initialState, action) => {
 }
 
 export default title
-

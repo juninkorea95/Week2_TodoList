@@ -1,4 +1,4 @@
-import { StArea, StBox, StText } from "pages/Home"
+import { StText, StArea, StBox } from "styles/style"
 import { Link } from "react-router-dom"
 
 function DoneBox ({todos, deleteButtonHandler, returnToTodoHandler}) {
@@ -19,9 +19,7 @@ function DoneBox ({todos, deleteButtonHandler, returnToTodoHandler}) {
         </StBox>
         ))}  
 
-       {/* done-area 태그가 여기서 닫힙니다.  */}
       </StArea>
-       {/* done-text, done-area, done-box 묶음 태그가 여기서 닫힙니다. */}
       </div>
     )
 }
