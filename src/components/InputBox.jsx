@@ -29,7 +29,7 @@ function InputBox({title, content, titleChange, contentChange, submitButtonHandl
       />
 
       {/* 내용 텍스트와 빈칸 생성 */}
-      <label className='input-label' style={{
+      <label style={{
       fontFamily: '"Noto Sans KR", sans-serif',
       marginRight: '10px',
       marginLeft: '10px',
@@ -44,7 +44,7 @@ function InputBox({title, content, titleChange, contentChange, submitButtonHandl
       />
 
       {/* 제출 버튼 생성 */}
-      <button className="submit-button" style = {{
+      <button style = {{
         backgroundColor: 'rgb(108, 175, 108)',
         color: 'white',
         padding: '10px 20px',

@@ -34,7 +34,7 @@ function Detail() {
   const param = useParams();
 
   const detail = todos.find(todo => todo.id === parseInt(param.id))
-
+    
   return (
   <FRAME>
     <STBOX>

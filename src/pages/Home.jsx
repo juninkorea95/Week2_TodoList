@@ -4,18 +4,16 @@ import InputBox from 'components/InputBox'
 import TodoBox from 'components/TodoBox'
 import DoneBox from 'components/DoneBox'
 import { useDispatch, useSelector } from 'react-redux'
-import { Title, ResetTitle } from 'redux/modules/title'
-import { Content, ResetConTent } from 'redux/modules/content'
+import { Title, Content, Reset } from 'redux/modules/Input'
 import { Add, Delete, Done, Cancel } from 'redux/modules/todos'
 
 function Home() {
   
   // title 과 content 는 제목/내용 빈칸에 들어가는 글자의 상태를 그려주기 위해 만든 state 
-  const title = useSelector(state => state.title)
-
-  const content = useSelector(state => state.content)
-
+  const Input = useSelector(state => state.Input)
+//   const content = useSelector(state => state.content)
   const todos = useSelector(state =>state.todos)
+  
   
   const dispatch = useDispatch()
 
@@ -26,19 +24,18 @@ function Home() {
   const contentChange = (e) => {dispatch(Content(e.target.value))}
 
   const submitButtonHandler = () => {
-
-    if (title && content) {
+   
+    if (Input.title && Input.content) {
       const newTodo = {
         id: Date.now(),
-        title: title,
-        content: content,
+        title: Input.title,
+        content: Input.content,
         isDone: 0,
       }
       const addedTodo = [...todos,newTodo]
       dispatch(Add(addedTodo))
       
-      dispatch(ResetTitle())
-      dispatch(ResetConTent())
+      dispatch(Reset())
     
     } else {
       alert ('제목과 내용을 추가해주세요!')
@@ -66,8 +63,8 @@ function Home() {
 
       {/* 이 곳에 title, content, submitButton이 들어간 input-box 영역을 만듭니다.  */}
       <InputBox
-        title = {title}
-        content = {content}
+        title = {Input.title}
+        content = {Input.content}
         titleChange = {titleChange}
         contentChange = {contentChange}
         submitButtonHandler = {submitButtonHandler}
