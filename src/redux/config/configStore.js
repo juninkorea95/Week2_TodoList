@@ -1,11 +1,11 @@
-import {createStore} from "redux"
-import { combineReducers } from "redux";
 import todos from "redux/modules/todos";
 import Input from "redux/modules/Input";
+import { configureStore } from "@reduxjs/toolkit";
 
-const rootReducer = combineReducers({
-    todos,
-    Input
-});
-const store = createStore(rootReducer); 
+const store = configureStore({
+    reducer: {
+      todos,
+      Input
+    }  
+    })
 export default store;

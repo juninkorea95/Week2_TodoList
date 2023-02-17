@@ -25,7 +25,7 @@ function InputBox({title, content, titleChange, contentChange, submitButtonHandl
       <input className='input-button' 
       type = "text"
       value = {title}
-      onChange = {titleChange}  // titleChange라는 함수가 무엇인지는 js영역에서 설명이 되어야한다. 
+      onChange = {titleChange}  
       />
 
       {/* 내용 텍스트와 빈칸 생성 */}
@@ -36,11 +36,11 @@ function InputBox({title, content, titleChange, contentChange, submitButtonHandl
       fontWeight: 'bold'
       }}>내용:</label>
       
-      {/* 내용 빈칸 --> 이곳에서 쓰여지는 값을 추출해서 아래 구역에 옮겨줘야한다. */}
+
       <input className='input-button' 
       type = "text"
       value = {content}
-      onChange = {contentChange}  // titleChange라는 함수가 무엇인지는 js영역에서 설명이 되어야한다. 
+      onChange = {contentChange}  
       />
 
       {/* 제출 버튼 생성 */}

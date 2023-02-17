@@ -23,7 +23,7 @@ export const Content = (value) => {
 }
 
 const initialState = {
-    title: '',
+    title :'',
     content: '',
 }
 
